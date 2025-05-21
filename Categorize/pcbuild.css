@@ -1,0 +1,159 @@
+/* Base body and fonts */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-links li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px; /* Adjust the height of the line /
+    background-color:white; / Color of the line /
+    position: absolute;
+    left: 0;
+    bottom: -5px; / Position the line below the text /
+    transform: scaleX(0); / Initially hide the line /
+    transition: transform 0.3s ease; / Transition for the line */
+}
+
+    .nav-links li a:hover {
+    color: white; 
+    }
+
+    .nav-links li a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Grid container for your parts */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Each product card */
+.item {
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.item img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.item p {
+  font-weight: bold;
+  margin: 0;
+  color: #222;
+}
+
+/* Hover effect */
+.item:hover {
+  transform: translateY(-5px);
+  border-color: #3498db;
+}
+
+/* Highlight selected part */
+.item.selected {
+  border-color: #2ecc71;
+  background-color: #eafaf1;
+}
+
+/* Summary section */
+.summary {
+  max-width: 600px;
+  margin: 40px auto 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summary h2 {
+  margin-top: 0;
+  color: #34495e;
+}
+
+#build-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+#build-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#total, #tier {
+  margin: 10px 0;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* Tier colors */
+.tier-low {
+  color: #e74c3c; /* Red */
+}
+
+.tier-mid {
+  color: #f39c12; /* Orange */
+}
+
+.tier-high {
+  color: #27ae60; /* Green */
+}

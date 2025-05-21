@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Build Your Own PC</title>
+  <link rel="stylesheet" href="pcbuild.css" />
+</head>
+<body>
+  <!-- Header with Logo and Navigation -->
+  <header>
+    <div class="logo-container">
+      <img src="image/logoo.png" alt="Logo" class="logo" />
+      <ul class="nav-links">
+        <li><a href="cart.html">Home</a></li>
+        <li><a href="graphics-card.html">Graphics Cards</a></li>
+        <li><a href="monitors.html">Monitors</a></li>
+        <li><a href="peripirals.html">Peripirals</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <h1>Build Your Own PC</h1>
+
+  <!-- Product Grid -->
+  <div class="grid">
+    <div class="item" onclick="selectPart(this, 'CPU', 'AMD RX 6500 XT, 4GB GDDR6, 2.6 GHz', 350)">
+      <img src="image/Rx6500Xt.png" alt="CPU" />
+      <p>CPU</p>
+    </div>
+
+    <div class="item" onclick="selectPart(this, 'Monitor', 'ASUS 24\' Full HD IPS, 75Hz', 200)">
+      <img src="image/BenQ.webp" alt="Monitor" />
+      <p>Monitor</p>
+    </div>
+
+    <div class="item" onclick="selectPart(this, 'Peripherals', 'AULA F755 Mechanical Keyboard', 100)">
+      <img src="image/AulaF755.webp" alt="Peripherals" />
+      <p>Peripherals</p>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h2>Your Build</h2>
+    <ul id="build-list"></ul>
+    <h3 id="total">Total: $0</h3>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const build = {};
+    let totalPrice = 0;
+
+    function selectPart(element, partType, specs, price) {
+      const list = document.getElementById('build-list');
+
+      // Toggle logic
+      if (build[partType]) {
+        // Deselect item
+        element.classList.remove('selected');
+        delete build[partType];
+        totalPrice -= price;
+
+        // Remove item from list
+        const listItems = document.querySelectorAll('#build-list li');
+        listItems.forEach((li) => {
+          if (li.dataset.part === partType) {
+            li.remove();
+          }
+        });
+      } else {
+        // Select item
+        element.classList.add('selected');
+        build[partType] = { specs, price };
+        totalPrice += price;
+
+        // Add item to list
+        const li = document.createElement('li');
+        li.dataset.part = partType;
+        li.textContent = `${partType}: ${specs} - $${price}`;
+        list.appendChild(li);
+      }
+
+      // Update total
+      document.getElementById('total').textContent = `Total: $${totalPrice}`;
+    }
+  </script>
+</body>
+</html>
